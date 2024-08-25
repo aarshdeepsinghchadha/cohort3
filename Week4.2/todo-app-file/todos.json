@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "title": "Complete the Todo in file assignment 2",
+    "completed": true
+  },
+  {
+    "id": 2,
+    "title": "Complete the Todo in memory assignment 1",
+    "completed": false
+  }
+]
