@@ -1,8 +1,8 @@
 {
-  "name": "week-5-offline",
+  "name": "help",
   "version": "1.0.0",
   "description": "",
-  "main": "function.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
     "chalk": "^5.3.0",
     "commander": "^12.1.0"
   }

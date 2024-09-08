@@ -1,8 +1,8 @@
 {
-  "name": "week-5-offline",
+  "name": "week-6.1",
   "version": "1.0.0",
   "description": "",
-  "main": "function.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^1.7.7",
-    "chalk": "^5.3.0",
-    "commander": "^12.1.0"
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "fs-extra": "^11.2.0",
+    "jsonwebtoken": "^9.0.2",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
   }
 }
