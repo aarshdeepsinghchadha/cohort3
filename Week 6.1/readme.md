@@ -34,24 +34,6 @@ This project is a **To-Do Application** built using **Node.js** (Express) for th
 - **PUT /todos/:id**: Updates a specific task (e.g., mark as done/undone).
 - **DELETE /todos/:id**: Deletes a specific task.
 
-## Frontend Screenshots
-
-### Sign-up and Sign-in Forms
-![Sign-up Form](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/ea2fa18b-3c7d-420e-89e7-169e625a972d/image.png)
-
-### Alerts for ZOD Validation
-![Alerts](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/111faada-4baa-49f2-a5e4-7ff712bc2cd5/image.png)
-
-![ZOD Error Handling](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/f8356ce3-1c66-4426-97ed-947cc31b2d95/image.png)
-
-### User-specific Task List and JWT Token Storage
-![Task List](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/ed07e34e-ea16-4963-83c8-7152b64b396d/image.png)
-![Token in LocalStorage](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/d8da08ad-4c55-4ebc-9c9b-a51f13b0fe14/image.png)
-
-### Edit, Delete, and Mark Task as Done
-![Edit Task](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/39e7046e-df00-4016-917a-4fb3ef84a05a/image.png)
-![Task Completed](https://prod-files-secure.s3.us-west-2.amazonaws.com/8baf2741-359c-47f4-b184-efd7123c0029/cb5bdab1-2209-4205-901c-719fbd1ddcd2/image.png)
-
 ## Getting Started
 
 ### Prerequisites
