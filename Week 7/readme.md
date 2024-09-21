@@ -1,5 +1,4 @@
-
-# Week 6 Todo Assignment
+# Week 7 Todo Assignment
 
 This project is a **To-Do Application** built using **Node.js** (Express) for the backend and **HTML, Bootstrap, and Axios** for the frontend. The app features JWT-based authentication and allows users to manage their tasks securely.
 
@@ -12,6 +11,7 @@ This project is a **To-Do Application** built using **Node.js** (Express) for th
 3. **Task Management API**: Supports CRUD operations (Create, Read, Update, Delete) for managing to-dos.
 4. **Express Middleware**: Custom middleware for authorization, error handling, and validation.
 5. **Axios**: Facilitates HTTP requests between the frontend and backend.
+6. **Database Seeding**: Seeds the database with initial user and task data only if it's empty, preventing data loss on server restarts.
 
 ### Frontend (HTML, Bootstrap, Axios)
 
@@ -79,7 +79,4 @@ This project is a **To-Do Application** built using **Node.js** (Express) for th
 
 ---
 
-Created by Aarshdeep Chadha
-```
-
-This version includes clean formatting, making it easier to read without too much syntax or styling complexity. You can copy and use this as your `README.md` file.
+## Created by Aarshdeep Chadha
