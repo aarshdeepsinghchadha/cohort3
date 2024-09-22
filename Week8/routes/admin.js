@@ -80,8 +80,11 @@ router.post('/course', async (req, res) => {
             return res.status(400).json({ message: 'Course with this title already exists' });
         }
 
-        // Create and save the new course
-        const newCourse = new Course(validatedCourse);
+        // Create and save the new course with adminId
+        const newCourse = new Course({
+            ...validatedCourse,
+            adminId: req.user.id // Use the authenticated admin's ID from the token
+        });
         await newCourse.save();
 
         res.status(201).json({ message: 'Course created successfully' });
@@ -93,19 +96,27 @@ router.post('/course', async (req, res) => {
     }
 });
 
-
 // Edit a Course
 router.put('/course/:id', async (req, res) => {
     try {
         const validatedCourse = courseSchema.parse(req.body); // Validate course data
+        const course = await Course.findById(req.params.id);
+
+        if (!course) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        // Check if the authenticated admin is the one who created the course
+        if (course.adminId.toString() !== req.user.id) {
+            return res.status(403).json({ message: 'You do not have permission to edit this course' });
+        }
+
         const updatedCourse = await Course.findByIdAndUpdate(
             req.params.id,
             validatedCourse,
             { new: true } // Return the updated document
         );
-        if (!updatedCourse) {
-            return res.status(404).json({ message: 'Course not found' });
-        }
+
         res.json({ message: 'Course updated successfully', course: updatedCourse });
     } catch (err) {
         if (err instanceof z.ZodError) {
@@ -118,11 +129,23 @@ router.put('/course/:id', async (req, res) => {
 // Delete a Course
 router.delete('/course/:id', async (req, res) => {
     try {
+        const course = await Course.findById(req.params.id);
+
+        if (!course) {
+            return res.status(404).json({ message: 'Course not found' });
+        }
+
+        // Check if the authenticated admin is the one who created the course
+        if (course.adminId.toString() !== req.user.id) {
+            return res.status(403).json({ message: 'You do not have permission to delete this course' });
+        }
+
         await Course.findByIdAndDelete(req.params.id);
         res.json({ message: 'Course deleted successfully' });
     } catch (error) {
         res.status(500).json({ message: 'Server error' });
     }
 });
+
 
 module.exports = router;
