@@ -1,6 +1,9 @@
+import { useState } from "react";
+
 function App() {
   return (
     <div style={{ backgroundColor: "#ecf0f1", height: "100vh", position: "relative" }}>
+      <ToogleMessage />
       {/* Greeting Component that spans horizontally */}
       <GreetingComponent greeting="Hello Aarsh" />
 
@@ -11,7 +14,7 @@ function App() {
             <PostComponent
               imageSrc="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png"
               name="Lego"
-              followers="23,777 followers"
+              subtitle="23,777 followers"
               time="12 mins"
               description="let's play with toys? which one is your fav?"
             />
@@ -21,8 +24,7 @@ function App() {
             <PostComponent
               imageSrc="https://cdn.logoworks.com/wp-content/uploads/2017/06/Untitled-2-640x360-1.png"
               name="Starbucks"
-              followers="100,500 followers"
-              time="5 mins"
+              subtitle="promoted"
               description="Come have a coffee with us?"
             />
             <br />
@@ -50,6 +52,18 @@ function GreetingComponent({ greeting }) {
   );
 }
 
+
+function ToogleMessage() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return <div>
+    <button onClick={() => setIsVisible(!isVisible)}>
+      Toogle Message
+    </button>
+    {isVisible && <p>this message is conditionally redered!</p>}
+  </div>
+}
+
 const postStyle = {
   width: 200,
   backgroundColor: "white",
@@ -60,7 +74,7 @@ const postStyle = {
 };
 
 // Post Component with props
-function PostComponent({ imageSrc, name, followers, time, description }) {
+function PostComponent({ imageSrc, name, subtitle, time, description }) {
   return (
     <div style={postStyle}>
       <div style={{ display: "flex" }}>
@@ -75,15 +89,17 @@ function PostComponent({ imageSrc, name, followers, time, description }) {
         />
         <div style={{ fontSize: 10, marginLeft: 10 }}>
           <b>{name}</b>
-          <div style={{ paddingTop: 3 }}>{followers}</div>
-          <div style={{ display: "flex" }}>
-            <div style={{ paddingTop: 2 }}>{time}</div>
+          <div style={{ paddingTop: 3 }}>{subtitle}</div>
+
+          {/* conditional rendering below  */}
+          {time && <div style={{ display: "flex" }}>
+            <div style={{ paddingTop: 3 }}>{time}</div>
             <img
               src="https://cdn-icons-png.flaticon.com/128/2088/2088617.png"
               alt="Time Icon"
-              style={{ width: 12, height: 12, marginLeft: 5 }}
+              style={{ width: 12, height: 12, marginLeft: 5, paddingTop: 3 }}
             />
-          </div>
+          </div>}
 
         </div>
       </div>
