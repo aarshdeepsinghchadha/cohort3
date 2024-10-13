@@ -1,49 +1,73 @@
-import { PostComponent } from "./Post";
-import { GreetingComponent } from "./Greeting";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
 
-  const [posts, setPosts] = useState([]);
+  const [currentTab, setCurrentTab] = useState(1);
+  const [tabData, setTabData] = useState({});
+  const [loading, setLoading] = useState(true);
 
-  const postComponents = posts.map(post => <PostComponent
-    imageSrc={post.imageSrc}
-    name={post.name}
-    subtitle={post.subtitle}
-    time={post.time}
-    description={post.description}
-  />)
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${currentTab}`);
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const data = await response.json();
+        setTabData(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  function addPost() {
-    setPosts([
-      ...posts,
-      {
-        imageSrc: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/512px-LEGO_logo.svg.png",
-        name: "Lego",
-        subtitle: "23,777 followers",
-        time: "12 mins",
-        description: "Let's play with toys? Which one is your favorite?",
-      },
-    ]);
-  }
+    fetchData();
 
-  return (
-    <div style={{ backgroundColor: "#ecf0f1", height: "100vh", position: "relative" }}>
-      {/* Greeting Component that spans horizontally */}
-      <GreetingComponent greeting="Hello Aarsh" />
-      <div style={{ paddingLeft: 20 }}>
-        <button onClick={addPost}>Add Post</button>
-      </div>
-      {/* Posts start below the Greeting Component */}
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 20 }}>
-        <div>
-          <div>
-            {postComponents}
-          </div>
-        </div>
-      </div>
+    // Optional cleanup if needed
+    return () => {
+      setTabData({}); // Reset data if necessary
+    };
+  }, [currentTab]);
+
+
+  return <div>
+    <div style={{
+      display: "flex",
+      justifyContent: "space-between",
+      paddingBottom: 20,
+      width: "60%",
+      margin: "0 auto"
+    }}>
+      <button onClick={() => { setCurrentTab(1) }}
+        style={{ color: currentTab == 1 ? "red" : "black" }}>
+        Todo #1
+      </button>
+      <button onClick={() => { setCurrentTab(2) }}
+        style={{ color: currentTab == 2 ? "red" : "black" }}>
+        Todo #2
+      </button>
+      <button onClick={() => { setCurrentTab(3) }}
+        style={{ color: currentTab == 3 ? "red" : "black" }}>
+        Todo #3
+      </button>
+      <button onClick={() => { setCurrentTab(4) }}
+        style={{ color: currentTab == 4 ? "red" : "black" }}>
+        Todo #4
+      </button>
     </div>
-  );
+    <div style={{
+      paddingLeft: 20,
+      paddingTop: 20,
+      fontSize: 20,
+      background: "gray",
+      textAlign: "center"
+    }}>
+      {loading ? "Loading.." : tabData.title}
+    </div>
+
+  </div>
 }
 
 export default App;
