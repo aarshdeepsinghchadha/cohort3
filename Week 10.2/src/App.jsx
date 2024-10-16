@@ -1,39 +1,9 @@
-import { useState } from "react"
+import RecoilBulbExample from "./RecoilBulbExample"
+
 
 
 function App() {
-  return <div>
-    <LightBulb />
-  </div>
+  return <RecoilBulbExample />
 }
-
-function LightBulb() {
-  const [bulbOn, setBulbOn] = useState(true);
-  return <div>
-
-    <BulbState bulbOn={bulbOn} />
-    <ToogleBulbState setBulbOn={setBulbOn} />
-  </div>
-}
-
-function BulbState({ bulbOn }) {
-
-
-  return <div>
-    {bulbOn ? "Bulb On" : "Bulb Off"}
-  </div>
-}
-
-function ToogleBulbState({ setBulbOn }) {
-
-  function toogle() {
-    setBulbOn(currentState => !currentState)
-  }
-
-  return <div>
-    <button onClick={toogle}>Toogle the bulb</button>
-  </div>
-}
-
 
 export default App
