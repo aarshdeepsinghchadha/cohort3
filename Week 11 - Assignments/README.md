@@ -4,6 +4,8 @@
 
 In this week's assignments, we explored two powerful libraries for data fetching and state management in React applications: **SWR** (stale-while-revalidate) and **React Query**. These libraries simplify data handling and improve the performance of applications by managing server state effectively.
 
+Check out the complete summary : [Week 11 Assignments: SWR and React Query](https://aarshdeep-chadha-29.notion.site/Week-11-Assignments-i-e-SWR-and-React-Query-124b4777ab3580e8b348f439ccc723f9?pvs=74).
+
 ## SWR
 
 ### What is SWR?
