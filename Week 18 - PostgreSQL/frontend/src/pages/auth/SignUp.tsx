@@ -35,13 +35,13 @@ const SignUp: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault();
   
-      if (!validateForm()) return; // Stop submission if validation fails
+      if (!validateForm()) return; 
   
-      await signUp(formData, () => navigate("/sign-in")); // Redirect on success
+      await signUp(formData, () => navigate("/sign-in")); 
     };
   
     return (
-      <div className="flex min-h-screen items-center justify-center bg-gray-100">
+      <div className="flex min-h-screen items-center justify-center">
         <div className="w-full max-w-md p-8 bg-white rounded shadow-md">
           <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">Sign Up</h2>
           <form onSubmit={handleSubmit}>
@@ -88,6 +88,20 @@ const SignUp: React.FC = () => {
               {isLoading ? "Signing up..." : "Sign Up"}
             </button>
           </form>
+          <p className="mt-2 text-center text-sm/6 text-gray-500">
+          <a
+            onClick={() => navigate("/")}
+            className="font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
+          >
+            Back to home?
+          </a>
+          <a
+            onClick={() => navigate("/sign-in")}
+            className="ml-4 font-semibold text-indigo-600 hover:text-indigo-500 cursor-pointer"
+          >
+            Already have a account?
+          </a>
+        </p>
         </div>
       </div>
     );
