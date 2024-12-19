@@ -11,18 +11,24 @@ export function Otp() {
 
     const handleBasicProject = () => {
         navigate("/basic-project");
-    }
+    };
 
     const [otp, setOtp] = useState(["", "", "", "", "", ""]);
 
     const handleOtpChange = (index, value) => {
-        const newOtp = [...otp];
-        newOtp[index] = value;
-        setOtp(newOtp);
-        if (value && index < 5) {
-            refs[index + 1].current.focus();
+        if (/^\d*$/.test(value)) { // Allow only numeric values
+            const newOtp = [...otp];
+            newOtp[index] = value;
+            setOtp(newOtp);
+
+            // Automatically focus the next field if input is valid
+            if (value && index < 5) {
+                refs[index + 1].current.focus();
+            }
+
+            // Enable the Verify button only when all fields are filled
+            setIsDisabled(newOtp.some((val) => !val));
         }
-        setIsDisabled(newOtp.some((val) => !val));
     };
 
     const handleKeyDown = (e, index) => {
@@ -35,13 +41,11 @@ export function Otp() {
 
     return (
         <div className="min-h-screen flex flex-col items-center justify-center bg-blue-500 space-y-12">
-
             <div className="w-full max-w-3xl px-6">
                 <Heading />
             </div>
 
             <div className="flex flex-col items-center w-full max-w-3xl space-y-8 py-16 px-12">
-
                 <div className="text-center">
                     <h1 className="text-4xl font-bold text-white mb-6">
                         Check Your Email For A Code
@@ -59,7 +63,7 @@ export function Otp() {
                         <input
                             key={index}
                             ref={refs[index]}
-                            type="text"
+                            type="tel" // Better experience for numeric input on mobile
                             value={value}
                             maxLength="1"
                             onChange={(e) => handleOtpChange(index, e.target.value)}

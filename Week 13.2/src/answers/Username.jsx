@@ -13,33 +13,36 @@ export const Username = () => {
 
   const handleSignUp = () => {
     navigate("/otp");
-  }
+  };
 
   const handleInputChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-    setIsDisabled(value.trim() === "");
+
+    // Email validation regex
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    setIsDisabled(!emailRegex.test(value));
   };
 
   return (
     <div className="h-screen bg-blue-700 flex flex-col justify-center items-center px-4">
       <Heading />
 
-      <div className="my-4">
-        <Subtitle>Enter Username</Subtitle>
-        <Subtitle>Please Enter your UserName.</Subtitle>
+      <div className="my-4 mt-20">
+        <Subtitle>Please Enter your Email Address.</Subtitle>
       </div>
 
       <div className="w-full max-w-md mx-auto space-y-6">
         <Input
           type="text"
-          placeholder="Enter Username"
+          placeholder="Enter Email Address"
           value={inputValue}
           onChange={handleInputChange}
         />
         <Button disabled={isDisabled} onClick={handleSignUp}>
           Sign Up
         </Button>
+        
       </div>
     </div>
   );
