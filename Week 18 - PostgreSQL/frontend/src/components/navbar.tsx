@@ -12,7 +12,6 @@ const Navbar: React.FC = () => {
   };
 
   const handleNavigate = () => {
-    // If the user is authenticated, navigate to the todos page
     if (isAuthenticated) {
       navigate("/todos");
     } else {
