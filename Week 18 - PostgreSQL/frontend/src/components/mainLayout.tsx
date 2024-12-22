@@ -6,14 +6,14 @@ const MainLayout: React.FC = () => {
   const location = useLocation();
 
   if (location.pathname === "/sign-in" || location.pathname === "/sign-up") {
-    return <Outlet />; 
+    return <Outlet />;
   }
 
   return (
     <div>
       <Navbar />
       <div>
-        <Outlet /> 
+        <Outlet />
       </div>
     </div>
   );

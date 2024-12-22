@@ -52,8 +52,9 @@ const TodoModal: React.FC<TodoModalProps> = ({ todo, mode, onClose, onSave }) =>
             placeholder="Description"
             value={formData.description}
             onChange={handleChange}
-            className="w-full px-4 py-2 border rounded focus:outline-none"
+            className="w-full px-4 py-2 border rounded focus:outline-none sm:h-32 md:h-48 lg:h-64"
           />
+
           <label className="flex items-center space-x-2">
             <input
               type="checkbox"
