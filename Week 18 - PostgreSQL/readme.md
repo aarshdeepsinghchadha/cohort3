@@ -138,7 +138,7 @@ CREATE TABLE todos (
 ## Recorded Video Link
 
 As this is a fun project and won't be deployed, you can watch the recorded demo here:  
-[Recorded Video Link](https://x.com/home)
+[Recorded Video Link](https://x.com/MidnightASC/status/1870849972683276359)
 
 ## Future Improvements
 
